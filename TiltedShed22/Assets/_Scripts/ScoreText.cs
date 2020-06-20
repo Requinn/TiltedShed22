@@ -12,8 +12,8 @@ public class ScoreText : MonoBehaviour
 
     public void UpdateScoreText(int newScore) {
         if(routine != null) StopCoroutine(routine);
-        _text.text = newScore.ToString("N0");
-        //routine = StartCoroutine("LerpScore", newScore);
+        //_text.text = newScore.ToString("N0");
+        routine = StartCoroutine("LerpScore", newScore);
     }
 
     private IEnumerator LerpScore(int target) {
