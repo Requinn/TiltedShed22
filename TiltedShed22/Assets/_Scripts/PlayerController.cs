@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     private bool _isChomping = false;
 
+    public delegate void PlayerDeathEvent();
+    public PlayerDeathEvent pDied;
+
     private void Start()
     {
         // idk
@@ -86,7 +89,7 @@ public class PlayerController : MonoBehaviour
     
     private void OnDeath()
     {
-        
+        if (pDied != null) pDied();
     }
 
 

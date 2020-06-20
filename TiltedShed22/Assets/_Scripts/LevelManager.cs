@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
 
     public void OnLevelWasLoaded(int level) {
         //listen for player death
-        //_player
+        _player.pDied += OnPlayerDeath;
         StartLevel();
     }
 
@@ -78,18 +78,17 @@ public class LevelManager : MonoBehaviour
         }
         _countDownText.color = Color.green;
         _countDownText.text = "GO!";
-        StartPlayer();
+        OnTimerFinished();
         yield return new WaitForSeconds(0.5f);
         _countDownText.gameObject.SetActive(false);
         yield return 0f;
     }
 
     /// <summary>
-    /// Send player command either through an event or direct call
+    /// Start the object spawner
     /// </summary>
-    public void StartPlayer() {
-        Debug.Log("Player Started!");
-        //_player.
+    public void OnTimerFinished() {
+        //_player.ToggleRunning(true);
     }
 
     /// <summary>
