@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         ToggleRunning(true);
         FinishChomp();
         _biteReport = _chompTrigger.GetComponent<BiteReport>();
-        _biteReport.BiteEvent += HandleChomp;
+        _biteReport.BiteEvent += HandleBite;
         _chompTrigger.gameObject.SetActive(false);
     }
 
@@ -110,8 +110,16 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Chomp bit something of value
     /// </summary>
-    private void HandleChomp() {
-        if(pScored != null) pScored(100);
+    public void HandleBite(int score) {
+        AddPoints(score);
+    }
+
+    public void StompPeople(int score) {
+        AddPoints(score);
+    }
+
+    private void AddPoints(int score) {
+        if(pScored != null) pScored(score);
     }
 
     public void ToggleRunning(bool argIsRunning)
@@ -120,7 +128,10 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("IsRunning", _isRunning);
     }
 
-    
+    public void Kill() {
+        OnDeath();
+    }  
+
     private void OnDeath()
     {
         _isRunning = false;
@@ -135,8 +146,9 @@ public class PlayerController : MonoBehaviour
         return Input.GetButtonDown("Jump");
     }
 
-    public void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Obstacle")) {
+    public void OnCollisionEnter2D(Collision2D c) {
+        if (c.otherCollider.gameObject.CompareTag("Obstacle")) {
+            Debug.Log("Died!");
             OnDeath();
         }
     }

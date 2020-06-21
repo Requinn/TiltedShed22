@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BiteReport : MonoBehaviour
 {
-    public delegate void OnBiteEvent();
+    public delegate void OnBiteEvent(int score);
     public OnBiteEvent BiteEvent;
 
-    public void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Obstacle")) {
-            if (BiteEvent != null) BiteEvent();
+    public void OnTriggerEnter2D(Collider2D c) {
+        if (c.CompareTag("Obstacle")) {
+            Debug.Log("Bit " + c.name);          
+            if (BiteEvent != null) BiteEvent(c.GetComponent<Obstacle>().Value);
+            c.gameObject.SetActive(false);
         }
     }
 }
