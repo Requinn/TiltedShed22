@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &737863549
 Transform:
   m_ObjectHideFlags: 0
@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1394731488}
   - component: {fileID: 1394731489}
+  - component: {fileID: 7313516577424116347}
   m_Layer: 0
   m_Name: ChompCollider
   m_TagString: Untagged
@@ -129,6 +130,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.7, y: 1.29}
   m_Direction: 1
+--- !u!114 &7313516577424116347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394731487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e981964bfa319d041a77d3bc372c91dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1396171760
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +281,7 @@ GameObject:
   - component: {fileID: 6403670022654009303}
   - component: {fileID: 6403670022654009300}
   - component: {fileID: 1480506317}
+  - component: {fileID: 2928651500178342511}
   m_Layer: 0
   m_Name: Player_Dino
   m_TagString: Untagged
@@ -307,6 +321,7 @@ MonoBehaviour:
   _animator: {fileID: 6403670023961717096}
   _bodyCollider: {fileID: 6403670022654009300}
   _chompTrigger: {fileID: 1394731489}
+  _biteReport: {fileID: 0}
   _horzSpeed: 6.5
   _maxHorzDist: 2
   _audioSource: {fileID: 1480506317}
@@ -426,6 +441,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &2928651500178342511
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6403670022654009297}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6403670023961717098
 GameObject:
   m_ObjectHideFlags: 0
