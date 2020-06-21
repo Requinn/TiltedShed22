@@ -98,7 +98,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1394731488
 Transform:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -281,10 +281,10 @@ GameObject:
   - component: {fileID: 6403670022654009303}
   - component: {fileID: 6403670022654009300}
   - component: {fileID: 1480506317}
-  - component: {fileID: 2928651500178342511}
+  - component: {fileID: 1537963306}
   m_Layer: 0
   m_Name: Player_Dino
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -321,7 +321,7 @@ MonoBehaviour:
   _animator: {fileID: 6403670023961717096}
   _bodyCollider: {fileID: 6403670022654009300}
   _chompTrigger: {fileID: 1394731489}
-  _biteReport: {fileID: 0}
+  _biteReport: {fileID: 7313516577424116347}
   _horzSpeed: 6.5
   _maxHorzDist: 2
   _audioSource: {fileID: 1480506317}
@@ -441,7 +441,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!50 &2928651500178342511
+--- !u!50 &1537963306
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -456,7 +456,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
