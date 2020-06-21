@@ -254,6 +254,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 6403670023325525019}
+  _scrollingTextures:
+  - {fileID: 1021188194}
+  - {fileID: 1844879639}
+  - {fileID: 1465589847}
+  _generator: {fileID: 1499476997}
   _gameOverScreen: {fileID: 2101533341}
   _finalScoreText: {fileID: 2139225253}
   _countDownText: {fileID: 642504427}
@@ -1266,7 +1271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &642504427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3072,7 +3077,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs: []
-  peoplePrefabs: []
+  peoplePrefabs:
+  - {fileID: 2042894897278832882, guid: 58431328704a50745bb5ff335dd35436, type: 3}
+  - {fileID: 86680490312247190, guid: e28e176435245e54398e5ca656993576, type: 3}
   generationTimeStep: 0.1
   paths:
   - startPoint: {fileID: 842239389}

@@ -44,11 +44,10 @@ public class LevelManager : MonoBehaviour
         _player.pScored += UpdateScore;
 
         _totalScore = 0;
+
         _countDownText.gameObject.SetActive(false);
         _gameOverScreen.SetActive(false);
-    }
 
-    public void OnLevelWasLoaded(int level) {
         StartLevel();
     }
 
@@ -96,6 +95,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public void OnTimerFinished() {
         //_player.ToggleRunning(true);
+        _generator.StartGenerator();
     }
 
     /// <summary>
