@@ -29,4 +29,5 @@ public class PlayerAnimationEventEmitter : MonoBehaviour
         footstepIndex = (footstepIndex+1) % _footsteps.Length;
         _audioSource.PlayOneShot(_footsteps[footstepIndex], _audioSource.volume);
     }
+
 }

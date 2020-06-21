@@ -12,10 +12,18 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Params")]
     [SerializeField] private float _horzSpeed = 3f;
     [SerializeField] private float _maxHorzDist = 3f;
+    
+    [Header("SFX")]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip[] _chompHits;
+    [SerializeField] private AudioClip _chompMiss;
+    
 
     private bool _isRunning = false;
 
     private bool _isChomping = false;
+
+    private int _chompSoundIndex = 0;
 
     public delegate void PlayerDeathEvent();
     public PlayerDeathEvent pDied;
@@ -71,6 +79,11 @@ public class PlayerController : MonoBehaviour
         _isChomping = true;
         _animator.SetTrigger("Chomp");
         //_chompTrigger.gameObject.SetActive(true);
+        
+        // ToDo: Check if hit, play hit/miss sound accordingly
+        
+        _chompSoundIndex = (_chompSoundIndex+1) % _chompHits.Length;
+        _audioSource.PlayOneShot(_chompHits[_chompSoundIndex], _audioSource.volume);
     }
 
     private void FinishChomp()
@@ -93,13 +106,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    #region Input
-
     private bool GetChompInput()
     {
         // For now, use jump. Later, double tap?
         return Input.GetButtonDown("Jump");
     }
 
-    #endregion
 }
