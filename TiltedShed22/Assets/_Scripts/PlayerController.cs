@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip[] _chompHits;
     [SerializeField] private AudioClip _chompMiss;
-    
+
+    public bool debugTestHitSound = false;
 
     private bool _isRunning = false;
 
@@ -87,9 +88,17 @@ public class PlayerController : MonoBehaviour
         //_chompTrigger.gameObject.SetActive(true);
         
         // ToDo: Check if hit, play hit/miss sound accordingly
-        
-        _chompSoundIndex = (_chompSoundIndex+1) % _chompHits.Length;
-        _audioSource.PlayOneShot(_chompHits[_chompSoundIndex], _audioSource.volume);
+
+        bool hit = debugTestHitSound;
+        if (hit)
+        {
+            _chompSoundIndex = (_chompSoundIndex+1) % _chompHits.Length;
+            _audioSource.PlayOneShot(_chompHits[_chompSoundIndex], _audioSource.volume);
+        }
+        else
+        {
+            _audioSource.PlayOneShot(_chompMiss, _audioSource.volume);
+        }
     }
 
     private void FinishChomp()
