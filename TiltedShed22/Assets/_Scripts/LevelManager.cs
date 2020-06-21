@@ -34,14 +34,15 @@ public class LevelManager : MonoBehaviour
     }
 
     public void Start() {
+        _player.pDied += OnPlayerDeath;
+        _player.pScored += UpdateScore;
+
         _totalScore = 0;
         _countDownText.gameObject.SetActive(false);
         _gameOverScreen.SetActive(false);
     }
 
     public void OnLevelWasLoaded(int level) {
-        //listen for player death
-        _player.pDied += OnPlayerDeath;
         StartLevel();
     }
 

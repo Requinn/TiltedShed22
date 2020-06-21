@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private CapsuleCollider2D _bodyCollider;
     [SerializeField] private CapsuleCollider2D _chompTrigger;
-    
+    [SerializeField] private BiteReport _biteReport;
+
     [Header("Movement Params")]
     [SerializeField] private float _horzSpeed = 3f;
     [SerializeField] private float _maxHorzDist = 3f;
@@ -28,11 +29,16 @@ public class PlayerController : MonoBehaviour
     public delegate void PlayerDeathEvent();
     public PlayerDeathEvent pDied;
 
+    public delegate void PlayerScoredEvent(int score);
+    public PlayerScoredEvent pScored;
+
     private void Start()
     {
         // idk
         ToggleRunning(true);
         FinishChomp();
+        _biteReport = _chompTrigger.GetComponent<BiteReport>();
+        _biteReport.BiteEvent += HandleChomp;
         _chompTrigger.gameObject.SetActive(false);
     }
 
@@ -91,8 +97,14 @@ public class PlayerController : MonoBehaviour
         _isChomping = false;
         //_chompTrigger.gameObject.SetActive(false);
     }
-    
-    
+
+    /// <summary>
+    /// Chomp bit something of value
+    /// </summary>
+    private void HandleChomp() {
+        if(pScored != null) pScored(100);
+    }
+
     public void ToggleRunning(bool argIsRunning)
     {
         _isRunning = argIsRunning;
@@ -102,6 +114,8 @@ public class PlayerController : MonoBehaviour
     
     private void OnDeath()
     {
+        _isRunning = false;
+        gameObject.SetActive(false);
         if (pDied != null) pDied();
     }
 
@@ -110,6 +124,12 @@ public class PlayerController : MonoBehaviour
     {
         // For now, use jump. Later, double tap?
         return Input.GetButtonDown("Jump");
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Obstacle")) {
+            OnDeath();
+        }
     }
 
 }

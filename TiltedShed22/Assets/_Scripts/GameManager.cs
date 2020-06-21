@@ -1,9 +1,6 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
-/// <summary>
-/// Handles overall gamestate and data
-/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;

@@ -17,13 +17,15 @@ public class ScoreText : MonoBehaviour
     }
 
     private IEnumerator LerpScore(int target) {
-        int old = int.Parse(_text.text);
-        float t = old;
-        while (t < target) {
-            t += Mathf.Lerp(old, target, Time.deltaTime * 1.2f);
+        int old = int.Parse(_text.text.Replace(",",""));
+        float t = old, interp = 0;
+        while (interp <= 1.0f) {
+            t = Mathf.Lerp(old, target, interp);
+            interp += Time.deltaTime * 1.45f;
             _text.text = ((int)t).ToString("N0");
             yield return 0f;
         }
+        _text.text = target.ToString("N0");
         yield return 0f;
     }
 }
