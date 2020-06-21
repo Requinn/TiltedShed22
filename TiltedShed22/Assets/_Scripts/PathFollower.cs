@@ -29,9 +29,6 @@ public class PathFollower : MonoBehaviour
 
     private IEnumerator CoFollowPath()
     {
-       // float scaleStart = 0f;
-       // float scaleMid = 1f;
-
         float timer = 0f;
         while (timer < path.duration)
         {
@@ -43,26 +40,7 @@ public class PathFollower : MonoBehaviour
 
                 Vector3 worldPos = Vector3.Lerp(path.startPoint.position, path.endPoint.position, posLerp);
                 
-//                Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
-//                screenPos.z = 10f;
-//                transform.position = Camera.main.ScreenToWorldPoint(screenPos);
-                
                 transform.position = worldPos;
-                
-                
-                //float scaleLerp = path.scaleCurve.Evaluate(timer/path.duration);
-                
-                //transform.position = Vector3.ProjectOnPlane(worldPos, Vector3.forward);
-                //root.transform.position = Vector3.ProjectOnPlane(worldPos, Vector3.forward);
-
-                //float zDelta = path.endPoint.position.z - path.startPoint.position.z;
-                
-                //float startDepth = Camera.main.
-//                scaleLerp = (worldPos.z - path.startPoint.position.z) / zDelta;
-//                root.transform.localScale = Vector3.LerpUnclamped(Vector3.one * 0.25f, Vector3.one * 1.25f, scaleLerp);
-                
-                
-                //root.transform.localScale = Vector3.LerpUnclamped(Vector3.zero, Vector3.one, scaleLerp);
 
                 yield return null;
             }
