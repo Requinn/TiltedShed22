@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip[] _chompHits;
     [SerializeField] private AudioClip _chompMiss;
+    [SerializeField] private AudioClip _knockOut;
 
     public bool debugTestHitSound = false;
 
@@ -138,6 +139,7 @@ public class PlayerController : MonoBehaviour
         GameObject.Instantiate(_onDeathEffect, transform.position, Quaternion.identity);
         _isRunning = false;
         _animator.SetTrigger("Die");
+        _audioSource.PlayOneShot(_knockOut);
         //gameObject.SetActive(false);
         if (pDied != null) pDied();
     }
@@ -151,6 +153,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D c) {
         if (c.otherCollider.gameObject.CompareTag("Obstacle")) {
+            
+            //c.otherCollider.gameObject.GetComponent<">()
             Debug.Log("Died!");
             OnDeath();
         }

@@ -13,6 +13,8 @@ public class ScrollingTexture : MonoBehaviour
     private Material _mat;
     private MaterialPropertyBlock _properties;
 
+    public float speedMultiplier = 1f;
+
     public void Start() {
         _mat = GetComponent<MeshRenderer>().material;
     }
@@ -20,7 +22,7 @@ public class ScrollingTexture : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        offset += Time.deltaTime * _scrollSpeed * 0.1f;
+        offset += Time.deltaTime * _scrollSpeed * speedMultiplier * 0.1f;
         _appliedDir.x = offset * _scrollDirection.x;
         _appliedDir.y = offset * _scrollDirection.y;
         _mat.SetTextureOffset("_MainTex", _appliedDir);

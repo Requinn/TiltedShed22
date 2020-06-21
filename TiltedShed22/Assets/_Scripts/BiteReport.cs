@@ -10,8 +10,9 @@ public class BiteReport : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D c) {
         if (c.CompareTag("Obstacle")) {
             Debug.Log("Bit " + c.name);          
-            if (BiteEvent != null) BiteEvent(c.GetComponent<Obstacle>().Value);
-            c.gameObject.SetActive(false);
+            if (BiteEvent != null) 
+                BiteEvent(c.GetComponent<Obstacle>().Value);
+            c.GetComponent<Obstacle>().Kill();
         }
     }
 }

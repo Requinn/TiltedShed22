@@ -18,6 +18,8 @@ public class LevelGenerator : MonoBehaviour
 
     private Coroutine _generatorCoroutine;
     
+    private float speedMultiplier = 1f;
+    
     public void StartGenerator()
     {
         _generatorCoroutine = StartCoroutine(CoGenerator());
@@ -32,9 +34,22 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = multiplier;
+        for (int i = 0; i < this.paths.Length; i++)
+        {
+            //this.paths[i].duration /= multiplier;
+        }
+        PathFollower[] pathFollowers = FindObjectsOfType<PathFollower>();
+        for (int i = 0; i < pathFollowers.Length; i++)
+        {
+            pathFollowers[i].speedMultiplier = speedMultiplier;
+        }
+    }
+
     private IEnumerator CoGenerator()
     {
-
         int peopleStringGap = 0;
         int peopleStringLength = Random.Range((int) 3, 7);
         int currPeopleStringLength = 0;
@@ -53,7 +68,7 @@ public class LevelGenerator : MonoBehaviour
 
             int obstaclePath = -1;
             int personPath = -1;
-            if (time - lastGenTime > generationTimeStep)
+            if (time - lastGenTime > (generationTimeStep / speedMultiplier))
             {
                 lastGenTime = time;
                 
@@ -89,6 +104,7 @@ public class LevelGenerator : MonoBehaviour
                         lastPeoplePathIndex = personPath;
                         
                         peepPF.StartPath(paths[personPath]);
+                        peepPF.speedMultiplier = speedMultiplier;
                         currPeopleStringLength++;
                     }
                 }
@@ -139,6 +155,7 @@ public class LevelGenerator : MonoBehaviour
                         }
                         
                         obstPF.StartPath(paths[lastObstaclePathIndex]);
+                        obstPF.speedMultiplier = speedMultiplier;
                         currObstacleStringLength++;
                         
                         // DOUBLE UP
@@ -158,6 +175,7 @@ public class LevelGenerator : MonoBehaviour
                             GameObject obst2 = GameObject.Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)]);
                             PathFollower obstPF2 = obst2.GetComponent<PathFollower>();
                             obstPF2.StartPath(paths[dubPath]);
+                            obstPF2.speedMultiplier = speedMultiplier;
                         }
                     }
                 }

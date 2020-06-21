@@ -322,13 +322,15 @@ MonoBehaviour:
   _bodyCollider: {fileID: 6403670022654009300}
   _chompTrigger: {fileID: 1394731489}
   _biteReport: {fileID: 7313516577424116347}
-  _horzSpeed: 6.5
+  _onDeathEffect: {fileID: 100004, guid: 19340452dd8b2154e9693a5758913dc9, type: 3}
+  _horzSpeed: 8
   _maxHorzDist: 2
   _audioSource: {fileID: 1480506317}
   _chompHits:
   - {fileID: 8300000, guid: b1f0bbc178996b2408410fea1f66ad28, type: 3}
   _chompMiss: {fileID: 8300000, guid: 80059ffb1716eab44ae9079a830ada3a, type: 3}
-  debugTestHitSound: 0
+  _knockOut: {fileID: 8300000, guid: 70fb30afd6b6dc34bb46f7f7e9aeef71, type: 3}
+  debugTestHitSound: 1
 --- !u!70 &6403670022654009300
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -342,8 +344,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.33}
-  m_Size: {x: 0.89, y: 1.22}
+  m_Offset: {x: 0, y: -0.7000425}
+  m_Size: {x: 0.89, y: 0.978704}
   m_Direction: 0
 --- !u!82 &1480506317
 AudioSource:
@@ -356,7 +358,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

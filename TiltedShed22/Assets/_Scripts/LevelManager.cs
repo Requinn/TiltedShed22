@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +10,8 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField]
+    private float globalSpeedMultiplier = 1f;
     [SerializeField]
     private PlayerController _player;
 
@@ -31,9 +35,11 @@ public class LevelManager : MonoBehaviour
     private TextMeshProUGUI _countDownText;
     [SerializeField]
     private ScoreText _runningScoreText;
-
+    
     private bool _isCountingDown = false;
 
+    private int stage = 1;
+    
     public void UpdateScore(int delta) {
         _totalScore += delta;
         _runningScoreText.UpdateScoreText(_totalScore);
@@ -49,6 +55,28 @@ public class LevelManager : MonoBehaviour
         _gameOverScreen.SetActive(false);
 
         StartLevel();
+    }
+
+    private void Update()
+    {
+        if (_totalScore > stage * 1000)
+        {
+            stage++;
+            SetGlobalSpeedMultiplier(1 + ((stage-1) * 0.5f));
+        }
+        
+    }
+
+    public void SetGlobalSpeedMultiplier(float multiplier)
+    {
+        globalSpeedMultiplier = multiplier;
+        
+        foreach (ScrollingTexture s in _scrollingTextures)
+        {
+            s.speedMultiplier = globalSpeedMultiplier;
+        }
+
+        _generator.SetSpeedMultiplier(globalSpeedMultiplier);
     }
 
     /// <summary>
@@ -104,6 +132,12 @@ public class LevelManager : MonoBehaviour
     public void OnPlayerDeath() {
         _finalScoreText.text = _totalScore.ToString("N0");
         _generator.StopGenerator();
+
+       PathFollower[] pathFollowers = FindObjectsOfType<PathFollower>();
+       for (int i = 0; i < pathFollowers.Length; i++)
+       {
+           pathFollowers[i].StopPath();
+       }
         foreach (ScrollingTexture s in _scrollingTextures) {
             s.enabled = false;
         }

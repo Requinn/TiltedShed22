@@ -18,13 +18,21 @@ public class PathFollower : MonoBehaviour
 {
     [SerializeField] private GameObject root;
     
-    private Path path;
+    public Path path;
     private Coroutine followPathCoroutine;
+
+    public float speedMultiplier = 1f;
     
     public void StartPath(Path argPath)
     {
         path = argPath;
         followPathCoroutine = StartCoroutine(CoFollowPath());
+    }
+
+    public void StopPath()
+    {
+        StopCoroutine(followPathCoroutine);
+        //path = null;
     }
 
     private IEnumerator CoFollowPath()
@@ -34,7 +42,7 @@ public class PathFollower : MonoBehaviour
         {
             if (Time.timeScale > 0f)
             {
-                timer += Time.deltaTime;
+                timer += Time.deltaTime * speedMultiplier;
 
                 float posLerp = path.posCurve.Evaluate(timer/path.duration);
 
