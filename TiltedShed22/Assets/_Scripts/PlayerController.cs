@@ -120,7 +120,10 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("IsRunning", _isRunning);
     }
 
-    
+    public void Kill() {
+        OnDeath();
+    }  
+
     private void OnDeath()
     {
         _isRunning = false;
@@ -135,8 +138,8 @@ public class PlayerController : MonoBehaviour
         return Input.GetButtonDown("Jump");
     }
 
-    public void OnTriggerEnter2D(Collider2D c) {
-        if (c.CompareTag("Obstacle")) {
+    public void OnCollisionEnter2D(Collision2D c) {
+        if (c.otherCollider.gameObject.CompareTag("Obstacle")) {
             Debug.Log("Died!");
             OnDeath();
         }

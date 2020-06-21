@@ -11,6 +11,7 @@ public class BiteReport : MonoBehaviour
         if (c.CompareTag("Obstacle")) {
             Debug.Log("Bit " + c.name);
             if (BiteEvent != null) BiteEvent();
+            c.gameObject.SetActive(false);
         }
     }
 }
