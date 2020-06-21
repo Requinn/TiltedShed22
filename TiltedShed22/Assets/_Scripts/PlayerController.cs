@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CapsuleCollider2D _bodyCollider;
     [SerializeField] private CapsuleCollider2D _chompTrigger;
     [SerializeField] private BiteReport _biteReport;
+    [SerializeField] private GameObject _onDeathEffect;
+
 
     [Header("Movement Params")]
     [SerializeField] private float _horzSpeed = 3f;
@@ -133,6 +135,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDeath()
     {
+        GameObject.Instantiate(_onDeathEffect, transform.position, Quaternion.identity);
         _isRunning = false;
         _animator.SetTrigger("Die");
         //gameObject.SetActive(false);

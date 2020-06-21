@@ -3076,7 +3076,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4dfbce1f54be64da17c4ccfe57fef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefabs: []
+  obstaclePrefabs:
+  - {fileID: 2105253976955932491, guid: 55427bbfdf2ff3a4f86a4e8e86b40134, type: 3}
+  - {fileID: 2937016348646580654, guid: 701fe69f49ff7114fbeddb9646dadbf5, type: 3}
   peoplePrefabs:
   - {fileID: 2042894897278832882, guid: 58431328704a50745bb5ff335dd35436, type: 3}
   - {fileID: 86680490312247190, guid: e28e176435245e54398e5ca656993576, type: 3}
@@ -5007,6 +5009,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6403670022654009303, guid: f79fd37bb7e866043b83fd826cfcc111,
+        type: 3}
+      propertyPath: _onDeathEffect
+      value: 
+      objectReference: {fileID: 100004, guid: 19340452dd8b2154e9693a5758913dc9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f79fd37bb7e866043b83fd826cfcc111, type: 3}
 --- !u!114 &6403670023325525019 stripped
