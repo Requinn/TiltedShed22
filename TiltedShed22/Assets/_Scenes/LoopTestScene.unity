@@ -1223,7 +1223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660352657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -56.68, y: 110.76, z: -134.20233}
+  m_LocalPosition: {x: 2.42, y: 111.38, z: -134.20233}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1879,7 +1879,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278371823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.474243, y: 106.03, z: -146.68}
+  m_LocalPosition: {x: 0, y: 106.03, z: -146.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2021,19 +2021,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1394731487, guid: f79fd37bb7e866043b83fd826cfcc111, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1394731489, guid: f79fd37bb7e866043b83fd826cfcc111, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394731489, guid: f79fd37bb7e866043b83fd826cfcc111, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6403670022654009297, guid: f79fd37bb7e866043b83fd826cfcc111,
         type: 3}
       propertyPath: m_Name
       value: Player_Dino
       objectReference: {fileID: 0}
+    - target: {fileID: 6403670022654009300, guid: f79fd37bb7e866043b83fd826cfcc111,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6403670022654009302, guid: f79fd37bb7e866043b83fd826cfcc111,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -56.63663
+      value: 2.31
       objectReference: {fileID: 0}
     - target: {fileID: 6403670022654009302, guid: f79fd37bb7e866043b83fd826cfcc111,
         type: 3}
@@ -2250,18 +2263,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459535543}
   m_CullTransparentMesh: 0
+--- !u!1 &1537963301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6403670022654009297, guid: f79fd37bb7e866043b83fd826cfcc111,
+    type: 3}
+  m_PrefabInstance: {fileID: 1422662244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1537963303 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6403670022654009303, guid: f79fd37bb7e866043b83fd826cfcc111,
     type: 3}
   m_PrefabInstance: {fileID: 1422662244}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1537963301}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04cb60d4e47ab1f4bb4d456b4f2db714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &1537963306
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537963301}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1592073934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,7 +2735,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840907249}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -58.76, y: 107.85679, z: -134.20233}
+  m_LocalPosition: {x: 0, y: 107.85679, z: -134.20233}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3085,7 +3125,7 @@ PrefabInstance:
     - target: {fileID: 4497605894761329846, guid: 797b5ba77207037439cd298ba3743ea5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -57.224934
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4497605894761329846, guid: 797b5ba77207037439cd298ba3743ea5,
         type: 3}

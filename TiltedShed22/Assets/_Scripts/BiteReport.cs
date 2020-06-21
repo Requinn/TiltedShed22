@@ -7,8 +7,9 @@ public class BiteReport : MonoBehaviour
     public delegate void OnBiteEvent();
     public OnBiteEvent BiteEvent;
 
-    public void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Obstacle")) {
+    public void OnTriggerEnter2D(Collider2D c) {
+        if (c.CompareTag("Obstacle")) {
+            Debug.Log("Bit " + c.name);
             if (BiteEvent != null) BiteEvent();
         }
     }

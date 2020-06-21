@@ -135,8 +135,9 @@ public class PlayerController : MonoBehaviour
         return Input.GetButtonDown("Jump");
     }
 
-    public void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Obstacle")) {
+    public void OnTriggerEnter2D(Collider2D c) {
+        if (c.CompareTag("Obstacle")) {
+            Debug.Log("Died!");
             OnDeath();
         }
     }
