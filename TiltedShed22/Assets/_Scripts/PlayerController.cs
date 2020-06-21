@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         ToggleRunning(true);
         FinishChomp();
         _biteReport = _chompTrigger.GetComponent<BiteReport>();
-        _biteReport.BiteEvent += HandleChomp;
+        _biteReport.BiteEvent += HandleBite;
         _chompTrigger.gameObject.SetActive(false);
     }
 
@@ -110,8 +110,16 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Chomp bit something of value
     /// </summary>
-    private void HandleChomp() {
-        if(pScored != null) pScored(100);
+    public void HandleBite(int score) {
+        AddPoints(score);
+    }
+
+    public void StompPeople(int score) {
+        AddPoints(score);
+    }
+
+    private void AddPoints(int score) {
+        if(pScored != null) pScored(score);
     }
 
     public void ToggleRunning(bool argIsRunning)

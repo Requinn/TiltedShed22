@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+/// <summary>
+/// People
+/// </summary>
+public class People : MonoBehaviour
 {
     [SerializeField]
-    private int _scoreValue = 100;
+    private int _biteCharge = 1;
+    [SerializeField]
+    private int _value = 10;
 
-    public int Value {
-        get { return _scoreValue; }
-        set { _scoreValue = value; }
-    }
     public void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Player")) {
-            collision.GetComponent<PlayerController>().Kill();
+            collision.GetComponent<PlayerController>().StompPeople(_value);
         }
     }
 }
