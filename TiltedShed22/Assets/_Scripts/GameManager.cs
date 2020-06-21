@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void LoadLevel() {
-        SceneManager.LoadScene(2); //whatever the play scene is numbered
+        SceneManager.LoadScene(1); //whatever the play scene is numbered
     }
 
     public void Quit() {
