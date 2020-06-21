@@ -11,6 +11,7 @@ public class ScrollingTexture : MonoBehaviour
     private float _scrollSpeed = 1.0f;
     private float offset = 0;
     private Material _mat;
+    private MaterialPropertyBlock _properties;
 
     public void Start() {
         _mat = GetComponent<MeshRenderer>().material;
