@@ -111,7 +111,7 @@ public class LevelGenerator : MonoBehaviour
                             lastObstaclePathIndex = (lastObstaclePathIndex + 1) % 3;
                         }
 
-                        currPeopleStringLength = 0;
+                        currObstacleStringLength = 0;
                     }
                     else
                     {
