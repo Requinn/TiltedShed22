@@ -49,8 +49,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        
-        
+
         float horzInput = Input.GetAxisRaw("Horizontal");
         bool chomp = GetChompInput();
         
