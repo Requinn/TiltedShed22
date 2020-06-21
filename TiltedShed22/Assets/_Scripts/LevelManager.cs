@@ -16,6 +16,12 @@ public class LevelManager : MonoBehaviour
         get { return _totalScore; }
     }
 
+    [Header("Level Components")]
+    [SerializeField]
+    private ScrollingTexture[] _scrollingTextures;
+    [SerializeField]
+    private LevelGenerator _generator;
+
     [Header("UI Components")]
     [SerializeField]
     private GameObject _gameOverScreen;
@@ -97,7 +103,17 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public void OnPlayerDeath() {
         _finalScoreText.text = _totalScore.ToString("N0");
+        _generator.StopGenerator();
+        foreach (ScrollingTexture s in _scrollingTextures) {
+            s.enabled = false;
+        }
+        StartCoroutine(ShowGameEnd());
+    }
+
+    private IEnumerator ShowGameEnd() {
+        yield return new WaitForSeconds(1.5f);
         _gameOverScreen.SetActive(true);
+        yield return 0f;
     }
 
     public void LoadLevel(int levelID = 99) {

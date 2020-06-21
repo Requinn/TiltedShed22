@@ -135,7 +135,8 @@ public class PlayerController : MonoBehaviour
     private void OnDeath()
     {
         _isRunning = false;
-        gameObject.SetActive(false);
+        _animator.SetTrigger("Die");
+        //gameObject.SetActive(false);
         if (pDied != null) pDied();
     }
 
